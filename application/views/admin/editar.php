@@ -35,7 +35,7 @@
 			</div>
 			<div class="form-group" style="width:40%;margin-left:30%;">
 				<label for="clave"></label>
-				<input value="<?php echo $this->encrypt->decode($cliente->clave) ?>" class="form-control" name="clave" required type="text" id="clave" placeholder="Clave">
+				<input value="<?php echo $cliente->clave ?>" class="form-control" name="clave" required type="text" id="clave" placeholder="Clave">
 				<br><br><input class="btn btn-info" type="submit" value="Guardar">
 				<td><a class="btn btn-primary" href="<?php echo base_url() . "index.php/admin/" ?>">Regresar</a></td>
 

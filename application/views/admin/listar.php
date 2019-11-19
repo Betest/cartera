@@ -27,6 +27,7 @@
             </tr>
         </thead>
         <tbody>
+        <?php if (isset($clientes)) { ?>
             <?php foreach ($clientes as $cliente) { ?>
                 <tr>
                     <td><?php echo $cliente->id ?></td>
@@ -38,6 +39,7 @@
                     <td><a class="btn btn-warning" href="<?php echo base_url() . "index.php/admin/editar/" . $cliente->id ?>"><i class="fa fa-edit"></i></a></td>
                     <td><a class="btn btn-danger" href="<?php echo base_url() . "index.php/admin/eliminar/" . $cliente->id ?>"><i class="fa fa-trash"></i></a></td>
                 </tr>
+            <?php } ?>
             <?php } ?>
         </tbody>
     </table>

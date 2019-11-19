@@ -1,5 +1,4 @@
 <?php if (!defined('BASEPATH')) exit('No direct script access allowed');
-
 class admin extends CI_Controller
 {
     public function __construct()
@@ -7,21 +6,17 @@ class admin extends CI_Controller
         parent::__construct();
         $this->load->model('adminModel');
     }
-
-
     public function logout()
     {
         $this->session->sess_destroy();
         redirect("inicio");
     }
-
-
     public function ingresar()
     {
         if (isset($_POST['usuario'], $_POST['clave'])) {
 
             $usuario = $_POST['usuario'];
-            $clave = md5($_POST['clave']);
+            $clave = $_POST['clave'];
             $sesion = $this->adminModel->ingresar($usuario, $clave);
             if ($sesion) {
                 $this->session->set_userdata('identif', $_POST['usuario']); //asignando la sesion al usuario actual
@@ -55,7 +50,6 @@ class admin extends CI_Controller
         $this->load->view('header');
         $this->load->view("admin/agregar");
     }
-
     public function guardarCambios()
     {
         $resultado = $this->adminModel->guardarCambios(
@@ -80,7 +74,6 @@ class admin extends CI_Controller
         ));
         redirect("admin/");
     }
-
     public function editar($id)
     {
         $cliente = $this->adminModel->uno($id);
@@ -95,7 +88,6 @@ class admin extends CI_Controller
         $this->load->view('header');
         $this->load->view("admin/editar", array("cliente" => $cliente));
     }
-
     public function eliminar($id)
     {
         $resultado = $this->adminModel->eliminar($id);
@@ -113,10 +105,8 @@ class admin extends CI_Controller
         $data["nombre"] = $this->session->userdata('ident');
         redirect("admin/", $data);
     }
-
     public function index()
     {
-
         //validando que la sesion exista
         // if (!$this->session->userdata('identif')) {
         //     redirect('admin/admin');
@@ -133,10 +123,8 @@ class admin extends CI_Controller
             ));
         }
     }
-
     public function guardar()
     {
-
         $resultado = $this->adminModel->nuevo(
             $this->input->post("codcliente"),
             $this->input->post("apellidos"),
@@ -144,7 +132,6 @@ class admin extends CI_Controller
             $this->input->post("usuario"),
             $this->input->post("saldo"),
             $this->encrypt->encode($this->input->post("clave")) //falta encriptar
-
         );
         if ($resultado) {
             $mensaje = "Cliente guardado correctamente";

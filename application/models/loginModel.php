@@ -10,8 +10,9 @@ class loginModel extends CI_Model
     }    
     
     public function login($usuario,$clave){
+        
         $this->db->where('usuario', $usuario);
-        $this->db->where('clave', $clave);
+        $this->db->where('clave',$clave);
 
 
         $this->security->xss_clean($usuario);

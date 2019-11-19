@@ -36,11 +36,6 @@
 
                  </ul>
                  <ul class="navbar-nav ml-auto">
-
-
-
-
-
                      <?php if (!$this->session->userdata('usuario') && !$this->session->userdata('identif')) : ?>
                          <li class="nav-item">
                              <a class="nav-link" href="<?= site_url('login/login') ?>">Conectarse</a>
@@ -50,6 +45,7 @@
                              <a class="nav-link" href="<?= site_url("register/register") ?>">Registrarse</a>
                          </li>
                      <?php endif ?>
+                     
                      <li class="nav-item dropdown">
                          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                              Menu
@@ -59,8 +55,15 @@
                                  <a class="dropdown-item" href="<?php echo base_url(); ?>index.php/admin/">Ingresar</a>
 
                              </div>
-                         <?php endif ?>
+                         <?php endif ?>                         
+                         
                          <div class="dropdown-menu">
+                         <?php if ($this->session->userdata('usuario')) : ?>
+                                 <a class="dropdown-item">Usuario</a>
+                             <?php endif ?>
+                             <?php if ($this->session->userdata('identif')) : ?>
+                                 <a class="dropdown-item">Admin</a>
+                             <?php endif ?>
                              <!-- si hay sesion muestra salir, si no hay muestra conectar -->
                              <?php if ($this->session->userdata('usuario') || $this->session->userdata('identif')) : ?>
                                  <a class="dropdown-item" href="<?php echo base_url(); ?>index.php/login/logout ">Salir</a>

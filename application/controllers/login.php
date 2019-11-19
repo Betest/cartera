@@ -67,7 +67,7 @@ class login extends CI_Controller
     public function iniciar()
     {
         if (isset($_POST['usuario'], $_POST['clave'])) {
-
+            
             $usuario = $_POST['usuario'];
             $clave = $_POST['clave'];
             $sesion = $this->loginModel->login($usuario, $clave);
@@ -86,12 +86,6 @@ class login extends CI_Controller
                     "mensaje" => "Ocurrio un error con el usuario error 420",
                     "clase" => "danger",
                 ));
-            }else {
-                $this->session->set_flashdata(array(
-                    "mensaje" => "Su usuario o contraseña son incorrectos",
-                    "clase" => "danger",
-                ));
-                redirect("login/login");
             }
         }else{
             $this->session->set_flashdata(array(
