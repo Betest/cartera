@@ -1,6 +1,6 @@
      <header>
          <nav id="navp" class="navbar navbar-expand-lg navbar-light bg-light">
-             <a class="navbar-brand" href="http://localhost/pbanco/index.php/"><img src="<?php echo base_url(); ?>img/logo2.jpg" title="Banco Multinivel" style="width:40px;" alt=""></a>
+             <a class="navbar-brand" href="http://localhost/cartera/index.php/"><img src="<?php echo base_url(); ?>img/logo2.jpg" title="Banco Multinivel" style="width:40px;" alt=""></a>
              <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                  <span class="navbar-toggler-icon"></span>
              </button>
