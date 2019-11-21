@@ -131,7 +131,7 @@ class admin extends CI_Controller
             $this->input->post("nombres"),
             $this->input->post("usuario"),
             $this->input->post("saldo"),
-            $this->encrypt->encode($this->input->post("clave")) //falta encriptar
+            $this->encrypt->decode($this->input->post("clave")) //falta encriptar
         );
         if ($resultado) {
             $mensaje = "Cliente guardado correctamente";
