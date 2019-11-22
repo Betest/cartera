@@ -57,9 +57,12 @@ class recarga extends CI_Controller{
     }
 
     public function nueva(){
-        $cliente = $this->input->post("codcliente");
+        $codcliente = $this->input->post("codcliente");
         $valor = $this->input->post("valor");
-        $resultado = $this->recargaModel->nuevarecarga(
+        $cliente = $this->recargaModel->porCodCliente($codcliente);
+
+        if($cliente){
+            $resultado = $this->recargaModel->nuevarecarga(
                 $this->input->post("codcliente"),
                 $this->input->post("fecha"),
                 $this->input->post("hora"),
@@ -79,6 +82,19 @@ class recarga extends CI_Controller{
             "clase" => $clase,
         ));
         redirect("recarga/recarga");
+
+        }else{
+            $mensaje = "Este cliente no se encuentra registrado";
+            $clase = "danger";
+            $this->session->set_flashdata(array(
+                "mensaje" => $mensaje,
+                "clase" => $clase,
+            ));
+            $this->load->view("head");
+            $this->load->view("header");
+            $this->load->view("pago/pago");
+        }
+        
     }
 }
 ?>
