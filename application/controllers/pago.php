@@ -85,7 +85,7 @@ class pago extends CI_Controller{
                 "mensaje" => $mensaje,
                 "clase" => $clase,
             ));
-            redirect("pago/");
+            redirect("pago/pago");
 
         }else{
             $mensaje = "Esta factura no esta asignada para pagar";
