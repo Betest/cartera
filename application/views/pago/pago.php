@@ -1,4 +1,3 @@
-
 <body>
     <div class="container pt-4">
         <img src="<?php echo base_url(); ?>img/banner.jpg" alt="">
@@ -11,12 +10,17 @@
                 <?php echo $this->session->flashdata('mensaje') ?>
             </div>
         <?php endif; ?>
-        <form method="post" action="<?php echo base_url() ?>index.php/recarga/nueva">
+        <form method="post" action="<?php echo base_url() ?>index.php/pago/nueva">
             <legend style="text-align: center;"> 
-                <h1>Recargar</h1>
+                <h1>Pagar facturas</h1>
                 <div class="form-group" style="width:40%;margin-left:30%;">
                 <label for="codcliente"></label>
                 <input class="form-control" name="codcliente" required type="text" id="codcliente" placeholder="Identificacion">
+                </div>
+                
+                <div class="form-group" style="width:40%;margin-left:30%;">
+                <label for="nrofactura" ></label>
+                <input class="form-control" name="nrofactura" required type="text" id="nrofactura" value=" <?= (isset($facturas[0])) ? $facturas[0]->nrofactura : ""; ?>">
                 </div>
                 <div class="form-group" style="width:40%;margin-left:30%;">
                 <label for="fecha"></label>
@@ -24,18 +28,13 @@
                 </div>
                 
                 <div class="form-group" style="width:40%;margin-left:30%;">
-                <label for="hora"></label>
-                <input required id="hora" name="hora" type="datetime" class="form-control" placeholder="Hora">
-                </div>                               
-
-                <div class="form-group" style="width:40%;margin-left:30%;">
                 <label for="valor"></label>
-                <input class="form-control" name="valor" required type="number" id="valor" placeholder="Valor">
-                </div>   
+                <input required id="valor" name="valor" type="number" class="form-control" placeholder="Valor Pago">
+                </div>                  
                          
                 <div class="row " style="width:40%;margin-left:30%;">
-                    <td><input class="btn btn-info" type="submit" value="Recargar"></td>
-                    <td><a class="btn btn-primary" href="<?php echo base_url() . "index.php/pago/" ?>">Pagar Facturas</a></td>
+                    <td><input class="btn btn-info" type="submit" value="Pagar"></td>
+                    <td><a class="btn btn-primary" href="<?php echo base_url() . "index.php/recarga/recarga" ?>">Recargar</a></td>
 
                 </div>
 
@@ -43,3 +42,5 @@
         </form>
     </div>
 </body>
+
+

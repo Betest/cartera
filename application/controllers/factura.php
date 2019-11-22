@@ -66,6 +66,10 @@ class factura extends CI_Controller{
     }
 
     public function index(){
+
+        if ($this->session->userdata('usuario')) {
+            redirect('login/login');
+        }
         
         $this->load->view("head");
         $this->load->view("header");

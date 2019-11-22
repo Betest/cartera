@@ -27,7 +27,7 @@
                              <a class="nav-link" href="<?php echo base_url(); ?>index.php/admin/">Usuarios</a>
                          </li>
                          <li class="nav-item">
-                             <a class="nav-link" href="<?php echo base_url(); ?>index.php/factura">Facturas</a>
+                             <a class="nav-link" href="<?php echo base_url(); ?>index.php/factura/">Facturas</a>
                          </li>
                      <?php endif ?>
                      <li class="nav-item">
