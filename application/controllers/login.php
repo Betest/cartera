@@ -26,7 +26,7 @@ class login extends CI_Controller
             $this->load->view('login/login');
         }
     }
-   
+
 
 
     public function index()
@@ -67,7 +67,7 @@ class login extends CI_Controller
     public function iniciar()
     {
         if (isset($_POST['usuario'], $_POST['clave'])) {
-            
+
             $usuario = $_POST['usuario'];
             $clave = $_POST['clave'];
             $sesion = $this->loginModel->login($usuario, $clave);
@@ -76,6 +76,7 @@ class login extends CI_Controller
                 $this->session->set_flashdata(array(
                     "mensaje" => "Sesion iniciada",
                     "clase" => "primary",
+
                 ));
                 $this->load->view("head");
                 $this->load->view('header');
@@ -87,13 +88,21 @@ class login extends CI_Controller
                     "clase" => "danger",
                 ));
             }
-        }else{
+            $this->session->set_flashdata(array(
+                "mensaje" => "Usuario o contraseña invalida",
+                "clase" => "danger",
+            ));
+            $this->load->view("head");
+            $this->load->view('header');
+            $this->load->view("login/login");
+        } else {
             $this->session->set_flashdata(array(
                 "mensaje" => "Ocurrio un error inesperado",
                 "clase" => "danger",
             ));
-
+            $this->load->view("head");
+            $this->load->view('header');
+            $this->load->view("login/");
         }
     }
-    
 }

@@ -65,6 +65,7 @@ class pagoModel extends CI_Model
 
     public function todos()
     {
+        
         return $this->db->get("pago")->result();
     }
 

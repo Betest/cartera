@@ -41,7 +41,7 @@ class register extends CI_Controller{
                 $this->input->post("nombres"),
                 $this->input->post("usuario"),
                 $this->input->post("saldo"),
-                md5($this->input->post("clave"))
+                $this->input->post("clave")
                 
             );
         if($resultado){

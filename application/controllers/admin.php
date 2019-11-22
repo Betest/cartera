@@ -36,6 +36,13 @@ class admin extends CI_Controller
                     "clase" => "danger",
                 ));
             }
+            $this->session->set_flashdata(array(
+                "mensaje" => "Admin o contraseña invalida",
+                "clase" => "danger",
+            ));
+            $this->load->view("head");
+            $this->load->view('header');
+            $this->load->view("admin/admin");
         } else {
             $this->session->set_flashdata(array(
                 "mensaje" => "Su usuario o contraseña son incorrectos",

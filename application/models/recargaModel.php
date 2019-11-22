@@ -47,6 +47,8 @@ class recargaModel extends CI_Model
 
     public function todos()
     {
+        $ident = $this->codcliente;
+        $this->db->where('codcliente',$ident);
         return $this->db->get("recarga")->result();
     }
 
