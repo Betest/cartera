@@ -85,9 +85,9 @@ class pagoModel extends CI_Model
     public function porNroFact($nrofactura){
         return $this->db->get_where("factura", array("nrofactura" => $nrofactura))->row();
     }
-    function listafacturas()
+    function listapagos()
         {
-           $query = $this->db->query("Select * From factura Order By nrofactura Desc");
+           $query = $this->db->query("Select * From pago Order By nropago Desc");
             return $query->result();
         }
 }

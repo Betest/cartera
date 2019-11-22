@@ -13,11 +13,10 @@ class pago extends CI_Controller{
             redirect('login/login');
         }
 
-        $lfacturas = $this->pagoModel->listafacturas();
-        $datos['facturas'] = $lfacturas;
+        
         $this->load->view('head');
         $this->load->view('header');
-        $this->load->view("pago/pago",$datos);
+        $this->load->view("pago/pago");
     }
     
 
@@ -54,7 +53,9 @@ class pago extends CI_Controller{
         
         $this->load->view('head');
         $this->load->view('header');
-        $this->load->view("pago/pago");
+        $this->load->view("pago/listar",array(
+            "pagos" => $this->pagoModel->todos()
+        ));
     }
 
     public function nueva(){
@@ -84,7 +85,7 @@ class pago extends CI_Controller{
                 "mensaje" => $mensaje,
                 "clase" => $clase,
             ));
-            redirect("recarga/");
+            redirect("pago/");
 
         }else{
             $mensaje = "Esta factura no esta asignada para pagar";
@@ -100,11 +101,6 @@ class pago extends CI_Controller{
         
     }
 
-    function listafacturas()
-    {
-        $lfacturas = $this->pagoModel->listacafacturas();
-        $datos['facturas'] = $lfacturas;
-        $this->load->view('pago/pago', $datos);
-    }
+    
 }
 ?>
