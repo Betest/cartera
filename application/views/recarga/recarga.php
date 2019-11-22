@@ -10,7 +10,7 @@
                 <?php echo $this->session->flashdata('mensaje') ?>
             </div>
         <?php endif; ?>
-        <form method="post" action="<?php echo base_url() ?>index.php/recarga/recarga">
+        <form method="post" action="<?php echo base_url() ?>index.php/recarga/nueva">
             <legend style="text-align: center;"> 
                 <h1>Recargar</h1>
                 <div class="form-group" style="width:40%;margin-left:30%;">
@@ -24,7 +24,7 @@
                 
                 <div class="form-group" style="width:40%;margin-left:30%;">
                 <label for="hora"></label>
-                <input required id="nombres" name="nombres" type="datetime" class="form-control" placeholder="Hora">
+                <input required id="hora" name="hora" type="datetime" class="form-control" placeholder="Hora">
                 </div>                               
 
                 <div class="form-group" style="width:40%;margin-left:30%;">

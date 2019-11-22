@@ -1,4 +1,5 @@
-<?php
+<?php if (!defined('BASEPATH')) exit('No direct script access allowed');
+
     class registerModel extends CI_Model{
         public $id;
         public $codcliente;

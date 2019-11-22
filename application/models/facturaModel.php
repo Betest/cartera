@@ -1,4 +1,4 @@
-<?php
+<?php if (!defined('BASEPATH')) exit('No direct script access allowed');
     class facturaModel extends CI_Model{
         public $nrofactura;
         public $codcliente;
@@ -39,8 +39,10 @@
             return $this->db->get_where("factura", array("nrofactura" => $nrofactura))->row();
         }
 
-        public function porCodigoDeBarras($codcliente){
+        public function porCodCliente($codcliente){
             return $this->db->get_where("factura", array("codcliente" => $codcliente))->row();
         }
+
+        
     }
 ?>

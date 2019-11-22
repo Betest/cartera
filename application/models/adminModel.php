@@ -33,7 +33,7 @@ class adminModel extends CI_Model
         return $q->result_array();
     }
 
-    public function nuevo($codcliente, $apellidos, $nombres, $usuario, $saldo,$clave)
+    public function nuevo($codcliente, $apellidos, $nombres, $usuario, $saldo, $clave)
     {
         $this->codcliente = $codcliente;
         $this->apellidos = $apellidos;

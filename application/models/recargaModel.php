@@ -1,72 +1,68 @@
-<?php
-class VentaModel extends CI_model{
-    public function __construct(){
+<?php if (!defined('BASEPATH')) exit('No direct script access allowed');
+
+class recargaModel extends CI_Model
+{
+    public $nrorecarga;
+    public $codcliente;
+    public $fecha;
+    public $hora;
+    public $valor;
+
+    public function __construct()
+    {
         $this->load->database();
     }
 
-    public function porId($id){
-        $venta = new StdClass();
-        $venta->detalles = $this->detalleDeVenta($id);
-        $venta->productos = $this->productosVendidosDeUnaVenta($id);
-        return $venta;
+    public function nuevarecarga($codcliente, $fecha, $hora, $valor)
+    {
+        $this->codcliente = $codcliente;
+        $this->fecha = $fecha;
+        $this->hora = $hora;
+        $this->valor = $valor;
+
+        return $this->db->insert('recarga', $this);
     }
 
-    private function detalleDeVenta($id){
-        return $this->db
-        ->select("ventas.id, ventas.fecha, sum(productos_vendidos.cantidad * productos_vendidos.precio) as total")
-        ->from("ventas")
-        ->join("productos_vendidos", "productos_vendidos.id_venta = ventas.id")
-        ->where("productos_vendidos.id_venta", $id)
-        ->group_by("ventas.id")
-        ->get()
-        ->row();
-    }
-
-    private function productosVendidosDeUnaVenta($idVenta){
-        return $this->db
-        ->select("productos.descripcion, productos.codigo, productos_vendidos.precio, productos_vendidos.cantidad")
-        ->from("productos")
-        ->join("productos_vendidos", "productos_vendidos.id_producto = productos.id")
-        ->where("productos_vendidos.id_venta", $idVenta)
-        ->get()
-        ->result();
-    }
-
-    public function todas(){
-        return $this->db
-        ->select("ventas.id, ventas.fecha, sum(productos_vendidos.cantidad * productos_vendidos.precio) as total")
-        ->from("ventas")
-        ->join("productos_vendidos", "productos_vendidos.id_venta = ventas.id")
-        ->group_by("ventas.id")
-        ->get()
-        ->result();
-    }
-
-    public function eliminar($id){
-        return $this->db->delete("ventas", array("id" => $id));
-    }
-
-    public function nueva($productosVendidos){
-        # Primero registramos la venta
-        $detalleDeVenta = array("fecha" => date("Y-m-d H:i:s"));
-        $this->db->insert("ventas", $detalleDeVenta);
-
-        # Ahora tomamos su ID
+    public function actsaldo($codcliente, $valor)
+    {   
         
-        $idVenta = $this->db->insert_id();
+        $this->db->select('saldo');
+        $this->db->where('codcliente', $codcliente);
+        $saldo = $this->db->get('cliente')->row();
+        $datos = [
+            'codcliente'=> $codcliente,
+            'saldo' => ($saldo+$valor)
+        ];
 
-        # Recorrer el carrito
-        foreach($productosVendidos as $producto){
-            # El producto que insertamos es diferente al del carrito, sólo necesitamos algunas cosas:
-            $detalleDeProductoVendido = array(
-                "id_producto" => $producto->id,
-                "cantidad" => $producto->cantidad,
-                "precio" => $producto->precioVenta,
-                "id_venta" => $idVenta,
-            );
-            $this->db->insert("productos_vendidos", $detalleDeProductoVendido);
+
+        $query = $this->db->query("Select saldo From cliente where codcliente = '".$codcliente."'");
+
+        if($query->num_rows()>0) { 
+            $this->db->where('codcliente',$codcliente);
+            $this->db->update('cliente',$datos);
+            
         }
-        return true;
+        
+        return $query;
+    }
+
+    public function todos()
+    {
+        return $this->db->get("recarga")->result();
+    }
+
+    public function eliminar($nrorecarga)
+    {
+        return $this->db->delete("recarga", array("nrorecarga" => $nrorecarga));
+    }
+
+    public function uno($nrorecarga)
+    {
+        return $this->db->get_where("recarga", array("nrorecarga" => $nrorecarga))->row();
+    }
+
+    public function porCodCliente($codcliente)
+    {
+        return $this->db->get_where("recarga", array("codcliente" => $codcliente))->row();
     }
 }
-?>
