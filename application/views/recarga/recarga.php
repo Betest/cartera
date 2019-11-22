@@ -35,7 +35,9 @@
                          
                 <div class="row " style="width:40%;margin-left:30%;">
                     <td><input class="btn btn-info" type="submit" value="Recargar"></td>
-                    <td><a class="btn btn-primary" href="<?php echo base_url() . "index.php/pago/" ?>">Pagar Facturas</a></td>
+                    <td><a class="btn btn-success" href="<?php echo base_url() . "index.php/recarga/" ?>">Recargas</a></td>
+                    <td><a class="btn btn-primary" href="<?php echo base_url() . "index.php/pago/pago" ?>">Pagar Facturas</a></td>
+                    <td><a class="btn btn-success" href="<?php echo base_url() . "index.php/pago/" ?>">Pagar Facturas</a></td>
 
                 </div>
 

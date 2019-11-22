@@ -11,6 +11,7 @@
     <?php endif; ?>
     <div>
         <a class="btn btn-success" href="<?php echo base_url() ?>index.php/pago/pago">Nuevo pago <i class="fa fa-plus"></i></a>
+        <td><a class="btn btn-primary" href="<?php echo base_url() . "index.php/recarga/recarga" ?>">Recargar</a></td>
     </div>
     <br>
     <table class="table table-bordered">

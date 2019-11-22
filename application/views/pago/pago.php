@@ -14,6 +14,7 @@
             <legend style="text-align: center;"> 
                 <h1>Pagar facturas</h1>
                 <div class="form-group" style="width:40%;margin-left:30%;">
+                
                 <label for="codcliente"></label>
                 <input class="form-control" name="codcliente" required type="text" id="codcliente" placeholder="Identificacion">
                 </div>
@@ -34,7 +35,11 @@
                          
                 <div class="row " style="width:40%;margin-left:30%;">
                     <td><input class="btn btn-info" type="submit" value="Pagar"></td>
+                    <td><a class="btn btn-success" href="<?php echo base_url() . "index.php/pago/" ?>">Facturas</a></td>
                     <td><a class="btn btn-primary" href="<?php echo base_url() . "index.php/recarga/recarga" ?>">Recargar</a></td>
+                    <td><a class="btn btn-success" href="<?php echo base_url() . "index.php/recarga/" ?>">Recargas</a></td>
+                    
+                    
 
                 </div>
 

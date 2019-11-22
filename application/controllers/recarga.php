@@ -51,7 +51,9 @@ class recarga extends CI_Controller{
         
         $this->load->view('head');
         $this->load->view('header');
-        $this->load->view("recarga/recarga");
+        $this->load->view("recarga/listar",array(
+            "recargas" => $this->recargaModel->todos()
+        ));
     }
 
     public function nueva(){
