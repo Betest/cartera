@@ -62,8 +62,7 @@ class recargaModel extends CI_Model
         return $this->db->get_where("recarga", array("nrorecarga" => $nrorecarga))->row();
     }
 
-    public function porCodCliente($codcliente)
-    {
+    public function porCodCliente($codcliente){
         return $this->db->get_where("recarga", array("codcliente" => $codcliente))->row();
     }
 }
