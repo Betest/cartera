@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 19-11-2019 a las 20:04:43
+-- Tiempo de generación: 22-11-2019 a las 18:38:41
 -- Versión del servidor: 10.1.38-MariaDB
 -- Versión de PHP: 7.3.2
 
@@ -41,7 +41,7 @@ CREATE TABLE `administrador` (
 --
 
 INSERT INTO `administrador` (`id`, `usuario`, `identif`, `nombres`, `clave`) VALUES
-(1, 'admin', '10469', 'nose', '123456');
+(1, 'admin', '123456', 'admin', '123456');
 
 -- --------------------------------------------------------
 
@@ -64,9 +64,7 @@ CREATE TABLE `cliente` (
 --
 
 INSERT INTO `cliente` (`id`, `codcliente`, `apellidos`, `nombres`, `usuario`, `saldo`, `clave`) VALUES
-(1, '1048', 'tobon', 'yohan', 'jtobon89', 4000000, '123456'),
-(5, '1046', 'cataño', 'jeffrey', 'admin2', 2222, '123456'),
-(6, '1046907893', 'cataño2', 'jeffrey', 'admin', 22222, 'Wz1ZNgBkBGFSNlE7');
+(1, '123', 'florez', 'pepito', 'pflorez', 200000, '123456');
 
 -- --------------------------------------------------------
 
@@ -75,7 +73,7 @@ INSERT INTO `cliente` (`id`, `codcliente`, `apellidos`, `nombres`, `usuario`, `s
 --
 
 CREATE TABLE `factura` (
-  `nrofactura` varchar(50) COLLATE utf8_spanish_ci NOT NULL,
+  `nrofactura` int(50) NOT NULL,
   `codcliente` varchar(30) COLLATE utf8_spanish_ci NOT NULL,
   `fecha` varchar(10) COLLATE utf8_spanish_ci NOT NULL,
   `vlrfactura` float NOT NULL,
@@ -89,7 +87,7 @@ CREATE TABLE `factura` (
 --
 
 CREATE TABLE `pago` (
-  `nropago` varchar(100) COLLATE utf8_spanish_ci NOT NULL,
+  `nropago` int(100) NOT NULL,
   `nrofactura` varchar(50) COLLATE utf8_spanish_ci NOT NULL,
   `fecha` varchar(10) COLLATE utf8_spanish_ci NOT NULL,
   `valor` float NOT NULL
@@ -126,6 +124,18 @@ ALTER TABLE `cliente`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indices de la tabla `factura`
+--
+ALTER TABLE `factura`
+  ADD PRIMARY KEY (`nrofactura`);
+
+--
+-- Indices de la tabla `pago`
+--
+ALTER TABLE `pago`
+  ADD PRIMARY KEY (`nropago`);
+
+--
 -- Indices de la tabla `recarga`
 --
 ALTER TABLE `recarga`
@@ -145,7 +155,19 @@ ALTER TABLE `administrador`
 -- AUTO_INCREMENT de la tabla `cliente`
 --
 ALTER TABLE `cliente`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT de la tabla `factura`
+--
+ALTER TABLE `factura`
+  MODIFY `nrofactura` int(50) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT de la tabla `pago`
+--
+ALTER TABLE `pago`
+  MODIFY `nropago` int(100) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de la tabla `recarga`
