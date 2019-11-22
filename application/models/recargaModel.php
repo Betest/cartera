@@ -28,14 +28,13 @@ class recargaModel extends CI_Model
         
         $this->db->select('saldo');
         $this->db->where('codcliente', $codcliente);
-        $saldo = $this->db->get('cliente')->row();
+        $saldo = $this->db->get('cliente', 1)->row();
+        $query = $this->db->query("Select saldo From cliente where codcliente = '".$codcliente."'");
         $datos = [
             'codcliente'=> $codcliente,
-            'saldo' => ($saldo+$valor)
+            'saldo' => ($saldo->saldo+$valor)
         ];
-
-
-        $query = $this->db->query("Select saldo From cliente where codcliente = '".$codcliente."'");
+        
 
         if($query->num_rows()>0) { 
             $this->db->where('codcliente',$codcliente);

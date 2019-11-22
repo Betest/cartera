@@ -55,8 +55,8 @@ class recarga extends CI_Controller{
     }
 
     public function nueva(){
-            $cliente = $this->input->post("codcliente");
-            $valor = $this->input->post("valor");
+        $cliente = $this->input->post("codcliente");
+        $valor = $this->input->post("valor");
         $resultado = $this->recargaModel->nuevarecarga(
                 $this->input->post("codcliente"),
                 $this->input->post("fecha"),
@@ -67,6 +67,7 @@ class recarga extends CI_Controller{
             $mensaje = "Recarga realizada correctamente";
             $clase = "success";
             $this->recargaModel->actsaldo($cliente,$valor );
+            
         }else{
             $mensaje = "Error al recargar";
             $clase = "danger";
