@@ -88,13 +88,17 @@ class login extends CI_Controller
                     "clase" => "danger",
                 ));
             }
-            $this->session->set_flashdata(array(
-                "mensaje" => "Usuario o contraseña invalida",
-                "clase" => "danger",
-            ));
-            $this->load->view("head");
-            $this->load->view('header');
-            $this->load->view("login/login");
+            if (!$sesion){       
+                $this->session->set_flashdata(array(
+                    "mensaje" => "Usuario o contraseña invalida",
+                    "clase" => "danger",
+                ));
+                $this->load->view("head");
+                $this->load->view('header');
+                $this->load->view("login/login");
+
+            }
+            
         } else {
             $this->session->set_flashdata(array(
                 "mensaje" => "Ocurrio un error inesperado",
