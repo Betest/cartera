@@ -5,10 +5,10 @@
 <div class=" container col-xs-12">
     <h1>Pagos</h1>
     <?php if (!empty($this->session->flashdata())) : ?>
-        <div class="alert alert-<?php echo $this->session->flashdata('clase') ?>">
-            <?php echo $this->session->flashdata('mensaje') ?>
-        </div>
-    <?php endif; ?>
+            <div class="alert alert-<?php echo $this->session->flashdata('clase') ?>" style="width:40%;margin-left:30%;">
+                <?php echo $this->session->flashdata('mensaje') ?>
+            </div>
+        <?php endif; ?>
     <div>
         <a class="btn btn-success" href="<?php echo base_url() ?>index.php/pago/pago">Nuevo pago <i class="fa fa-plus"></i></a>
         <td><a class="btn btn-primary" href="<?php echo base_url() . "index.php/recarga/recarga" ?>">Recargar</a></td>

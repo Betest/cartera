@@ -49,7 +49,7 @@ class recargaModel extends CI_Model
     {
         $ident = $this->codcliente;
         $this->db->where('codcliente',$ident);
-        return $this->db->get("recarga")->result();
+        return $this->db->get("recarga")->result_array();
     }
 
     public function eliminar($nrorecarga)
@@ -63,6 +63,6 @@ class recargaModel extends CI_Model
     }
 
     public function porCodCliente($codcliente){
-        return $this->db->get_where("recarga", array("codcliente" => $codcliente))->row();
+        return $this->db->get_where("cliente", array("codcliente" => $codcliente))->row();
     }
 }

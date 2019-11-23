@@ -5,8 +5,8 @@
     </div>   
 
     <div class="container">
-        <?php if (!empty($this->session->flashdata())) : ?>
-            <div class="alert alert-<?php echo $this->session->flashdata('clase') ?>">
+    <?php if (!empty($this->session->flashdata())) : ?>
+            <div class="alert alert-<?php echo $this->session->flashdata('clase') ?>" style="width:40%;margin-left:30%;">
                 <?php echo $this->session->flashdata('mensaje') ?>
             </div>
         <?php endif; ?>

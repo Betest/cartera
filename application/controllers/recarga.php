@@ -71,7 +71,7 @@ class recarga extends CI_Controller{
         if($resultado){
             $mensaje = "Recarga realizada correctamente";
             $clase = "success";
-            $this->recargaModel->actsaldo($cliente,$valor );
+            $this->recargaModel->actsaldo($codcliente,$valor );
             
         }else{
             $mensaje = "Error al recargar";

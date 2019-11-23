@@ -35,14 +35,16 @@ class admin extends CI_Controller
                     "mensaje" => "Ocurrio un error con el usuario error 420",
                     "clase" => "danger",
                 ));
+            }if(!$sesion){
+                $this->session->set_flashdata(array(
+                    "mensaje" => "Admin o contraseña invalida",
+                    "clase" => "danger",
+                ));
+                $this->load->view("head");
+                $this->load->view('header');
+                $this->load->view("admin/admin");
             }
-            $this->session->set_flashdata(array(
-                "mensaje" => "Admin o contraseña invalida",
-                "clase" => "danger",
-            ));
-            $this->load->view("head");
-            $this->load->view('header');
-            $this->load->view("admin/admin");
+            
         } else {
             $this->session->set_flashdata(array(
                 "mensaje" => "Su usuario o contraseña son incorrectos",

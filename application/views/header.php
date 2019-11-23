@@ -19,7 +19,7 @@
                              <a class="nav-link" href="<?php echo base_url(); ?>index.php/recarga/recarga">Recarga</a>
                          </li>
                          <li class="nav-item">
-                             <a class="nav-link" href="<?php echo base_url(); ?>index.php/recarga/pago">Pagos</a>
+                             <a class="nav-link" href="<?php echo base_url(); ?>index.php/pago/pago">Pagos</a>
                          </li>
                      <?php endif ?>
                      <?php if ($this->session->userdata('identif')) : ?>
